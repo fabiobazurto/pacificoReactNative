@@ -1,5 +1,5 @@
 /**
- * Sample React Native App
+ * Pacificard Demo Fabio Bazurto
  * https://github.com/facebook/react-native
  *
  * @format
@@ -8,19 +8,17 @@
 
 import React,{Component}  from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
+    SafeAreaView,
+    Button,
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
+    StatusBar,
 } from 'react-native';
 
-import {
-    Header,
-    Colors
-} from '../components';
-
+import Header from '../components/Header';
+import Colors from '../components/Colors';
 
 const App: () => React$Node = () => {
   return (
@@ -37,12 +35,22 @@ const App: () => React$Node = () => {
             </View>
           )}
           <View style={styles.body}>
+
+            <Text style={styles.selectionSection}>Selecciona la marca de tarjeta que prefieras </Text>
+	    <View style={styles.fixToText}>
+              <Button
+            title="Mastercard"
+            onPress={() => Alert.alert('Left button pressed')}
+          />
+          <Button
+            title="Visa"
+            onPress={() => Alert.alert('Right button pressed')}
+          />
+        </View>
+            
+	  
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
             </View>
           </View>
         </ScrollView>
@@ -77,17 +85,28 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.dark,
   },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
+  selectionSection: {
+    marginTop: 8,
     fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+    fontWeight: '400',
+      color: Colors.dark,
+      textAlign: 'center',
   },
+    highlight: {
+	fontWeight: '700',
+    },
+    fixToText: {
+	flexDirection: 'row',
+	justifyContent: 'space-around',
+    },
+    footer: {
+	color: Colors.dark,
+	fontSize: 12,
+	fontWeight: '600',
+	padding: 4,
+	paddingRight: 12,
+	textAlign: 'right',
+    },
 });
 
 export default App;

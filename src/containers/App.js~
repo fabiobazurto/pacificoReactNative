@@ -19,7 +19,7 @@ import {
 import {
     Header,
     Colors
-} from '../components';
+} from './src/components';
 
 
 const App: () => React$Node = () => {
