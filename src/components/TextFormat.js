@@ -28,6 +28,9 @@ const TextFormat = StyleSheet.create({
     textCenter:{
 	textAlign: 'center',
     },
+    textCenter:{
+	textAlign: 'left',
+    },    
     highlight: {
 	fontWeight: '700',
     },
