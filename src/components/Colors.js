@@ -11,6 +11,6 @@ export default {
     forceBlue: '#00ff00',
     grayDisabled: '#E8E7E7',
     lightBlack: '#959595',
-    lightBlue: '#55A6F4'
-    
+    lightBlue: '#55A6F4',
+    footerBlue: '#003678',
 };

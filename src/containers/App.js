@@ -50,10 +50,26 @@ class App extends Component {
         })
     }
 
+    callApi(){
+        
+           fetch('https://jsonplaceholder.typicode.com/photos')
+    .then((result) => {
+        return result.json();//.text();
+    }).then((jsonResult) => {
+
+        const jobject = jsonResult;//JSON.parse(jsonResult);
+        let obj1 = jobject[jobject.length-1];
+        let obj2 = jobject[jobject.length-2];        
+        let album1 = `Album ${obj1.id}\n--title: ${obj1.title}\n--Url: ${obj2.url}`;
+        let album2 = `Album2 ${obj2.id}\n--title: ${obj2.title}\n--Url: ${obj2.url}`;        
+        alert(`${album1}\n ${album2}`);
+    })
+    }
+    
      render() {
          return (
              <NavigationContainer>
-               <Stack.Navigator initialRouteName="Congratulation"
+               <Stack.Navigator initialRouteName="Welcome"
                                 headerMode="screen"
                                 screenOptions={{
                                     headerTintColor: Colors.darkBlue,
@@ -65,7 +81,7 @@ class App extends Component {
                                options={{
                                    headerRight: () => (
                                        <Button
-                                         onPress={() => alert('This is a button!')}
+                                         onPress={() => this.callApi()}                                         
                                          icon={{
                                              name: 'close',
                                              type: 'font-awesome',
@@ -90,7 +106,7 @@ class App extends Component {
                                    headerLeft: null,
                                    headerRight: () => (
                                        <Button
-                                         onPress={() => alert('This is a button!')}
+                                         onPress={() => this.callApi()}
                                          icon={{
                                              name: 'close',
                                              type: 'font-awesome',

@@ -6,7 +6,9 @@ import {
     ListView,
     StatusBar,
     ImageBackground,
-    Dimensions
+    Dimensions,
+    Image,
+    Alert,
 
 } from 'react-native';
 
@@ -26,13 +28,10 @@ import {
         SafeAreaView,
     ScrollView} from 'react-native';
 
-class Congratulation extends Component {
-
-    
-    
+class Congratulation extends Component {   
     render() {
         return (
-            <SafeAreaView style={{backgroundColor: Colors.darkBlue}}>
+            <SafeAreaView style={{backgroundColor: Colors.darkBlue,height:"100%"}}>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>            
@@ -49,10 +48,43 @@ class Congratulation extends Component {
             <Text style={[TextFormat.mainTitleBlack,Layout.textCenter, {color:Colors.white, fontSize: 30}]}>¡Felicidades!</Text>
             </View>
 	    <View style={[Layout.textCenter,Layout.row]} >                        
-              <Text style={[TextFormat.normal,Layout.textCenter, {color:Colors.white}]}>Es un placer tenerte como cliente.</Text>              
+              <Text style={[TextFormat.normal,Layout.textCenter,TextFormat.lightText]}>Es un placer tenerte como cliente.</Text>              
             </View>
 
- </ScrollView>
+          <View style={[Layout.row, Layout.textCenter,styles.centrar]}>
+		  <View style={[{width: "33%", height: 60, padding: 0 }, Layout.textCenter]} >
+		    <Icon	    type='font-awesome'  name='envelope' size={30} style={styles.sicon}  />
+	          </View>
+		  <View style={[{width: "63%", height: 60, padding:0}]}>
+                    <Text style={[TextFormat.lightParagraph, TextFormat.small,TextFormat.lightText, TextFormat.textLeft]}>Hemos enviado un correo a: givaregpar@gmail.com, para que conozcas todos los beneficios de tu tarjeta.</Text>
+                  </View>
+	  </View>
+
+          <View style={[Layout.row, Layout.textCenter]}>
+	    <View style={[{width: "33%", height: 40, padding: 0 }, Layout.textCenter]} >
+	      <Icon	    type='font-awesome'  name='map-marker-alt' size={30} style={styles.sicon}  />
+	    </View>
+	    <View style={[{width: "63%", height: 40, padding:0}]}>
+              <Text style={[TextFormat.lightParagraph, TextFormat.small,TextFormat.lightText, TextFormat.textLeft]}>Tu tarjeta de crédito será enviada a la dirección de correspondencia que proporcionaste.</Text>
+            </View>
+	  </View>
+
+	  <View style={[headerStyle.footerContainer,{backgroundColor: Colors.footerBlue,marginTop:30}]} >
+
+	        <ImageBackground
+                  source={require('./bgfooot.png')}
+                  style={headerStyle.backgroundFooter}
+                  imageStyle={headerStyle.logoFooter}>
+                  
+                  <Image
+                    source={require('./footer.png')}
+                    resizeMode="contain"
+                    style={{width:"100%"}}           />
+                </ImageBackground>
+	      </View>
+
+        </ScrollView>
+              
             </SafeAreaView>
 	)    
     }
@@ -60,6 +92,7 @@ class Congratulation extends Component {
 
 
 const styles = StyleSheet.create({
+
     centrar:{
 
         paddingTop: 40
@@ -73,7 +106,7 @@ const styles = StyleSheet.create({
 	paddingTop:40,
     },
     sicon:{
-        color:"#CCC",
+        color:"#fff",
         width:"100%",
         height:"100%",
         textAlign:'center',
@@ -86,6 +119,9 @@ const styles = StyleSheet.create({
 });
 
 const headerStyle = StyleSheet.create({
+    scrollView:{
+        flex:1,
+    },
     container: {
 	flex: 1,
 	justifyContent: 'center',
@@ -94,7 +130,36 @@ const headerStyle = StyleSheet.create({
 	paddingTop: 40,
 	alignItems: 'center'
 	//    padding: 8,
-  },
+    },
+   footerContainer: {
+	flex: 1,
+	justifyContent: 'center',
+	height: (40*viewportHeight)/100,	
+	backgroundColor: Colors.deepBlue,
+
+	alignItems: 'center'
+	//    padding: 8,
+    },
+    imageContainer: {
+        marginTop: 30,
+    //    height: viewportHeight * 0.9,
+        width: viewportWidth,
+    },    
+    backgroundFooter:{
+	width: "100%",
+	height: "100%",
+	position:"absolute",
+	top:0,
+	left:0,
+
+        backgroundColor: Colors.footerBlue
+    },
+    logoFooter:{
+        flex:1,
+        resizeMode:'cover',
+height: undefined,
+    width: undefined        
+    },
     background: {
 	width: "100%",
 	height: "100%",
@@ -102,11 +167,6 @@ const headerStyle = StyleSheet.create({
 	bottom:0,
 	padding:0,
 	paddingVertical:-50,
-/*
-
-	justifyContent: 'center',
-	alignItems: 'center'	
-	*/
   },
   logo: {
 

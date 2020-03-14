@@ -17,6 +17,9 @@ const TextFormat = StyleSheet.create({
     lightParagraph:{
 	color: Colors.lightBlack,
     },
+    lightText:{
+        color: Colors.white
+    },
     mainTitleBlack:{
 	fontSize: 20,
 	marginTop: 8,
@@ -35,5 +38,4 @@ const TextFormat = StyleSheet.create({
 	fontWeight: "bold",
     }
 });
-
 export default TextFormat;

@@ -54,27 +54,24 @@ class Confirmation extends Component {
 	          </View>
 		</View>
               </View>
-              <View style={[Layout.col,Layout.verticalSpacing, {paddingLeft:20, paddingRight:20,},Layout.textCenter]}>
- <CodeInput
-   ref="codeInputRef1"
-   keyboardType="numeric"
-   className={'border-b'}
-   activeColor={Colors.darkBlue}
-   inactiveColor={Colors.darkBlue}
-   codeLength={6}
-
-   codeInputStyle={{fontSize:20}}
-
-      inputPosition='left'
-   onFulfill={(code) => this.props.navigation.navigate('Congratulation')}
-
- />
 
 
-
+              <View style={[Layout.col,Layout.verticalSpacing, {paddingLeft:20, paddingRight:20,paddingBottom:40},Layout.textCenter]}>
+                <CodeInput
+                  ref="codeInputRef1"
+                  keyboardType="numeric"
+                  className={'border-b'}
+                  activeColor={Colors.darkBlue}
+                  inactiveColor={Colors.darkBlue}
+                  codeLength={6}
+                  codeInputStyle={{fontSize:20}}
+                  inputPosition='left'
+                  onFulfill={(code) => this.props.navigation.navigate('Congratulation')} />
               </View>
             </View>
-          
+               <View style={Layout.textCenter}>
+                    <Text style={[TextFormat.secondaryTitleBlue]}>Solicitar nueva clave{'\n'}</Text>
+                  </View>          
         </ScrollView>
             </SafeAreaView>
 	)    
