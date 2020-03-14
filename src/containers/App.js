@@ -7,61 +7,134 @@
  */
 
 import React,{Component}  from 'react';
+import { Button } from 'react-native-elements';
 import {
     SafeAreaView,
-    Button,
     StyleSheet,
     ScrollView,
     View,
     Text,
     StatusBar,
+    TouchableOpacity,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {bind} from '../utils/utils';
 
-import Header from '../components/Header';
 import Colors from '../components/Colors';
+import Welcome from './Welcome';
+import Confirmation from './Confirmation';
+import Congratulation from './Congratulation';
 
-const App: () => React$Node = () => {
+
+class App extends Component {
+    
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            selectedTab: 'welcome'
+        };
+        bind(this)('_searchOnPress', '_employeesOnPress');
+    }
+    
+    _employeesOnPress() {
+        this.setState({
+            selectedTab: 'welcome'
+        })
+    }
+    
+    _searchOnPress() {
+        this.setState({
+            selectedTab: 'search'
+        })
+    }
+
+     render() {
+         return (
+             <NavigationContainer>
+               <Stack.Navigator initialRouteName="Congratulation"
+                                headerMode="screen"
+                                screenOptions={{
+                                    headerTintColor: Colors.darkBlue,
+                                    headerStyle: { backgroundColor: Colors.darkBlue, elevation: 0, shadowOpacity: 0 },
+                                    headerBackTitleVisible: true,
+                  
+                                }}>
+                 <Stack.Screen name="Welcome"  component={Welcome}
+                               options={{
+                                   headerRight: () => (
+                                       <Button
+                                         onPress={() => alert('This is a button!')}
+                                         icon={{
+                                             name: 'close',
+                                             type: 'font-awesome',
+                                             size: 20,
+                                             color: Colors.white,}}
+                                         type="clear"
+                                       />
+                                   ),
+                               }}/>
+                 <Stack.Screen name="Confirmation" component={Confirmation}
+                               options={{
+                                   title:'Confirmación',
+                                   headerTitleAlign:'center',
+                                                     headerTintColor: Colors.white,
+                                                     headerBackTitle:'Atrás',
+                                                     headerBackTitleVisible:true,
+                                                 }}
+
+                 />
+                 <Stack.Screen name="Congratulation" component={Congratulation}
+                               options={{
+                                   headerLeft: null,
+                                   headerRight: () => (
+                                       <Button
+                                         onPress={() => alert('This is a button!')}
+                                         icon={{
+                                             name: 'close',
+                                             type: 'font-awesome',
+                                             size: 20,
+                                             color: Colors.white,}}
+                                         type="clear"
+                                       />
+                                   ),
+                               
+                                   title:'Mastercard Clasica',
+                                   headerTitleStyle:{color: Colors.white},
+                                   headerTitleAlign:'center',
+                                                     headerTintColor: Colors.darkBlue,
+                                                     headerBackTitleVisible:false,
+                                                 }}
+
+                 />                 
+               </Stack.Navigator>
+             </NavigationContainer>             
+        )
+    }
+    
+}
+/**
+ * Right bar button on navigation bar
+ */
+const ShopButton = (title, onPress) => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>dfdf
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
+    <Button
+        title={title}
+        color={Colors.purple}
+        backgroundColor='white'
+        borderRadius={12}
+        fontSize={11}
+        buttonStyle={{paddingTop: 5, paddingBottom: 5, paddingLeft: 8, paddingRight: 8}}
+        onPress={onPress} />
+  )
+}
 
-            <Text style={styles.selectionSection}>Selecciona la marca de tarjeta que prefieras </Text>
-	    <View style={styles.fixToText}>
-              <Button
-            title="Mastercard"
-            onPress={() => Alert.alert('Left button pressed')}
-          />
-          <Button
-            title="Visa"
-            onPress={() => Alert.alert('Right button pressed')}
-          />
-        </View>
-            
-	  
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
 
+const Stack = createStackNavigator();
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: Colors.lighter,
+    backgroundColor: Colors.white,
   },
   engine: {
     position: 'absolute',
@@ -70,43 +143,23 @@ const styles = StyleSheet.create({
   body: {
     backgroundColor: Colors.white,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  selectionSection: {
-    marginTop: 8,
-    fontSize: 12,
-    fontWeight: '400',
-      color: Colors.dark,
-      textAlign: 'center',
-  },
-    highlight: {
-	fontWeight: '700',
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
     },
-    fixToText: {
-	flexDirection: 'row',
-	justifyContent: 'space-around',
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
     },
-    footer: {
-	color: Colors.dark,
-	fontSize: 12,
-	fontWeight: '600',
-	padding: 4,
-	paddingRight: 12,
-	textAlign: 'right',
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
     },
 });
+
 
 export default App;
