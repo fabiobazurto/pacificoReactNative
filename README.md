@@ -1,4 +1,5 @@
-# iOS Setup Sin Xcode
+# React Native app demo
+## iOS Setup Sin Xcode
 En su dispositivo iPhone realice los siguientes pasos:
 
 1. Ingrese al AppStore e instale la aplicación **ExpoClient**.
