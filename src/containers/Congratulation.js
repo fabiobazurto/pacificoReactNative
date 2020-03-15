@@ -9,7 +9,7 @@ import {
     Dimensions,
     Image,
     Alert,
-
+    TouchableOpacity,
 } from 'react-native';
 
 import { Button } from 'react-native-elements';
@@ -75,11 +75,14 @@ class Congratulation extends Component {
                   source={require('./bgfooot.png')}
                   style={headerStyle.backgroundFooter}
                   imageStyle={headerStyle.logoFooter}>
-                  
+                  <TouchableOpacity onPress={()=>this.props.navigation.navigate('Welcome') }>
+                   
                   <Image
                     source={require('./footer.png')}
                     resizeMode="contain"
-                    style={{width:"100%"}}           />
+                    style={{width:"100%"}}/>
+  </TouchableOpacity>
+                  
                 </ImageBackground>
 	      </View>
 

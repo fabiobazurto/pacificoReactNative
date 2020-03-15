@@ -106,7 +106,6 @@ class App extends Component {
                                    headerLeft: null,
                                    headerRight: () => (
                                        <Button
-                                         onPress={() => this.callApi()}
                                          icon={{
                                              name: 'close',
                                              type: 'font-awesome',
