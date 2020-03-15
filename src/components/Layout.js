@@ -31,6 +31,11 @@ const Layout = StyleSheet.create({
     card:{
 	marginLeft: 25,
 	marginRight:25,
+    },
+    bigButton:{
+        flex:1,
+        width:"80%",
+        padding:5,
     }
     
 });

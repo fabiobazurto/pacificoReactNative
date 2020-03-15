@@ -90,7 +90,7 @@ class Welcome extends Component {
 		  <View style={Layout.textCenter}>
                     <Text style={[TextFormat.secondaryTitleBlue]}>Conoce más beneficios{'\n'}</Text>
                   </View>
-                  <Button  title="Aceptar tarjeta" style={Layout.row}
+            <Button  title="Aceptar tarjeta" style={[Layout.bigButton,Layout.row]}
                    onPress={() => this.props.navigation.navigate('Confirmation')}/>
 	        </View>
               </View>
