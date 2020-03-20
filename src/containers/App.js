@@ -20,12 +20,12 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {bind} from '../utils/utils';
+import {bind} from './src/utils/utils';
 
-import Colors from '../components/Colors';
-import Welcome from './Welcome';
-import Confirmation from './Confirmation';
-import Congratulation from './Congratulation';
+import Colors from './src/components/Colors';
+import Welcome from './src/containers/Welcome';
+import Confirmation from './src/containers/Confirmation';
+import Congratulation from './src/containers/Congratulation';
 
 
 class App extends Component {
@@ -105,7 +105,8 @@ class App extends Component {
                                options={{
                                    headerLeft: null,
                                    headerRight: () => (
-                                       <Button
+					   <Button
+
                                          icon={{
                                              name: 'close',
                                              type: 'font-awesome',

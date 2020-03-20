@@ -3,7 +3,6 @@ import {
     StyleSheet,
     Text,
     View,
-    ListView,
 
 } from 'react-native';
 
@@ -12,8 +11,8 @@ import Colors from '../components/Colors';
 import Header from '../components/Header';
 import TextFormat from '../components/TextFormat';
 import Layout from '../components/Layout';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+//import { NavigationContainer } from '@react-navigation/native';
+//import { createStackNavigator } from '@react-navigation/stack';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {bind} from '../utils/utils';
@@ -38,7 +37,7 @@ class Welcome extends Component {
             </View>
             )}
 
-              <View >
+              <View style={Layout.textCenter}>
 	        <Text style={[TextFormat.normal,TextFormat.textCenter, Layout.verticalSpacing]}>Selecciona la marca de tarjeta que prefieras </Text>
 		<View style={[Layout.row, Layout.textCenter,Layout.verticalSpacing]}>
 	          <View style={Layout.col}>
@@ -73,11 +72,11 @@ class Welcome extends Component {
                 </View>
 
                 <View style={[Layout.row, Layout.textCenter, styles.centrar]}>
-		  <View style={[{width: "33%", height: 60, padding: 0 }, Layout.textCenter]} >
+		  <View style={[{width: "33%", height: 60, padding: 0,textAlign:'center' }, Layout.textCenter]} >
 		    <Icon	    type='font-awesome'  name='plane' size={40} style={styles.sicon}  />
-                    <Text style={[TextFormat.lightParagraph, TextFormat.small, TextFormat.textCenter]}>Acumulacion de millas</Text>
+                    <Text style={[TextFormat.lightParagraph, TextFormat.small,{textAlign:'center'}]}>Acumulacion de millas</Text>
 	          </View>
-		  <View style={[{width: "33%", height: 60, padding:0}, Layout.textCenter]}>
+		  <View style={[{width: "33%", height: 60, padding:0}, Layout.textCenter, TextFormat.textCenter]}>
 	            <Icon	    name='lock' style={styles.sicon} size={40} />
                     <Text style={[TextFormat.lightParagraph, TextFormat.small, TextFormat.textCenter]}>Proteccion de compras</Text>
                   </View>
@@ -90,19 +89,23 @@ class Welcome extends Component {
 		  <View style={Layout.textCenter}>
                     <Text style={[TextFormat.secondaryTitleBlue]}>Conoce más beneficios{'\n'}</Text>
                   </View>
-            <Button  title="Aceptar tarjeta" style={[Layout.bigButton,Layout.row]}
-                   onPress={() => this.props.navigation.navigate('Confirmation')}/>
 	        </View>
               </View>
             </View>
+          <View style={[Layout.container,{marginBottom:40}]}>
+            <Button  title="Aceptar tarjeta" containerViewStyle={Layout.fullWidth}
+                     onPress={() => this.props.navigation.navigate('Confirmation')}/>
+          </View>
+
         </ScrollView>
-            </SafeAreaView>
+      </SafeAreaView>
 	)    
     }
 }
 
 
 const styles = StyleSheet.create({
+
     centrar:{
 
         paddingTop: 40
